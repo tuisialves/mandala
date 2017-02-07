@@ -1,30 +1,14 @@
 function setup() {
-  createCanvas(800, 600);
-  frameRate(10);
-  background(10);
+  createCanvas(800,600);
+  //background(255)
   noFill();
+  angleMode(DEGREES);
+  frameRate(10);
 }
 
 function draw() {
+  translate(width/2,height/2);
+  stroke(lerpColor(color('#EFBFD9'),color('#2B95A3'),(frameCount%90)/90));
+  line(100,0,100*cos(frameCount*3),100*sin(frameCount*3), ["#E860AA"]);
   
-  push();
-  translate(400,300);
-  rotate(frameCount);
-  polygon(frameCount*0.2, frameCount*0.2, frameCount, frameCount/10);
-  
-  pop();
-  var col1=color('#D376B0');
-  var col2=color('#242F60');
-  stroke(lerpColor(col2,col1,frameCount/120));
-}
-
-function polygon(x, y, radius, npoints) {
-  var angle = TWO_PI / npoints;
-  beginShape();
-  for (var a = 3; a < TWO_PI; a += angle) {
-    var sx = x + cos(a) * radius;
-    var sy = y + sin(a) * radius;
-    vertex(sx, sy);
-  }
-  endShape(CLOSE);
 }
